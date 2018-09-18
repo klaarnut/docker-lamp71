@@ -1,4 +1,4 @@
-FROM ubuntu:17.10
+FROM ubuntu:17.04
 MAINTAINER Fer Uria <fauria@gmail.com>
 LABEL Description="Cutting-edge LAMP stack, based on Ubuntu 17.10 LTS. Includes .htaccess support and popular PHP7 features, including composer and mail() function." \
 	License="Apache License 2.0" \
