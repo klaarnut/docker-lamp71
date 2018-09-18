@@ -1,0 +1,10 @@
+#!/usr/bin/env expect
+
+set timeout -1
+spawn apt-get install -y phpmyadmin
+expect {
+    "Configure database for phpmyadmin with dbconfig-common?" { send "no\n"; exp_continue; }
+    "Web server to reconfigure automatically:" { send "1\n"; }
+}
+
+expect eof
