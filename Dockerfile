@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 MAINTAINER Fer Uria <fauria@gmail.com>
 LABEL Description="Cutting-edge LAMP stack, based on Ubuntu 17.10 LTS. Includes .htaccess support and popular PHP7 features, including composer and mail() function." \
 	License="Apache License 2.0" \
@@ -6,7 +6,7 @@ LABEL Description="Cutting-edge LAMP stack, based on Ubuntu 17.10 LTS. Includes 
 	Version="1.0"
 
 RUN apt-get update
-RUN apt-get upgrade -y
+RUN apt-get upgrade
 
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
