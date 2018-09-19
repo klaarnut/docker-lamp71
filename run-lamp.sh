@@ -30,7 +30,7 @@ fi
 
 # set new db credential
 /etc/init.d/mysql stop
-mysql -u root -e "update user set password=PASSWORD('') where User='root';update user set plugin='' where User='root';update user set authentication_string='' where User='root';flush privileges;"
+mysql -u root -e "use mysql;update user set password=PASSWORD('') where User='root';update user set plugin='' where User='root';update user set authentication_string='' where User='root';flush privileges;"
 
 /etc/init.d/mysql start
 
