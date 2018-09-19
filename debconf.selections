@@ -1,2 +1,4 @@
 postfix postfix/mailname string localhost
 postfix postfix/main_mailer_type string 'Docker Postfix'
+mariadb-server-10.2 mysql-server/root_password password secret
+mariadb-server-10.2 mysql-server/root_password_again password secret
