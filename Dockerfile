@@ -4,12 +4,24 @@ LABEL Description="Cutting-edge LAMP stack, based on Ubuntu 17.10 LTS. Includes 
 	License="Apache License 2.0" \
 	Usage="docker run -d -p [HOST WWW PORT NUMBER]:80 -p [HOST DB PORT NUMBER]:3306 -v [HOST WWW DOCUMENT ROOT]:/var/www/html -v [HOST DB DOCUMENT ROOT]:/var/lib/mysql fauria/lamp" \
 	Version="1.0"
+	
+ENV LOG_STDOUT **Boolean**
+ENV LOG_STDERR **Boolean**
+ENV LOG_LEVEL warn
+ENV ALLOW_OVERRIDE All
+ENV DATE_TIMEZONE Asia/Bangkok
+ENV TERM xterm
 
 RUN apt-get update
 RUN apt-get upgrade
 RUN apt-get dist-upgrade
 RUN apt-get autoremove
 
+RUN apt-get install software-properties-common -y
+RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+
+RUN sh -c "echo 'deb [arch=amd64,i386] https://mirrors.evowise.com/mariadb/repo/10.2/ubuntu '$(lsb_release -cs)' main' > /etc/apt/sources.list.d/MariaDB-10.2.list"
+RUN apt-get update
 
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
@@ -50,22 +62,15 @@ RUN apt-get install -y \
 	php7.1-xsl \
 	php7.1-zip
 
-COPY phpmyadmin-configuration.exp /tmp/
-RUN expect /tmp/phpmyadmin-configuration.exp
-
 RUN apt-get install apache2 libapache2-mod-php7.1 -y
 RUN apt-get install mariadb-server mariadb-client -y
+
+COPY phpmyadmin-configuration.exp /tmp/
+RUN expect /tmp/phpmyadmin-configuration.exp
 
 RUN apt-get install postfix -y
 RUN apt-get install git nodejs npm composer nano tree vim curl ftp -y
 RUN npm install -g bower grunt-cli gulp
-
-ENV LOG_STDOUT **Boolean**
-ENV LOG_STDERR **Boolean**
-ENV LOG_LEVEL warn
-ENV ALLOW_OVERRIDE All
-ENV DATE_TIMEZONE Asia/Bangkok
-ENV TERM xterm
 
 COPY index.php /var/www/html/
 COPY run-lamp.sh /usr/sbin/
