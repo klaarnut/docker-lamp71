@@ -7,12 +7,12 @@ LABEL Description="Cutting-edge LAMP stack, based on Ubuntu 17.10 LTS. Includes 
 
 RUN apt-get update
 RUN apt-get upgrade
-RUN apt-get install -y apt-utils
+RUN apt-get install -y --no-install-recommends apt-utils
 
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
 
-RUN apt-get install -y zip unzip
+RUN apt-get install -y expect unzip
 RUN apt-get install -y \
 	php7.1 \
 	php7.1-bz2 \
