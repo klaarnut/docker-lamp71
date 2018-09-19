@@ -64,13 +64,22 @@ COPY run-lamp.sh /usr/sbin/
 
 RUN a2enmod rewrite
 #RUN ln -s /usr/bin/nodejs /usr/bin/node
+
+RUN mkdir /usr/share/php/rvsitebuildercms
+RUN mkdir /var/www/rvsitebuildercms
+RUN mkdir /var/www/storage
+
+
 RUN chmod +x /usr/sbin/run-lamp.sh
 RUN chown -R www-data:www-data /var/www/html
 
-VOLUME /var/www/html
 VOLUME /var/log/httpd
 VOLUME /var/lib/mysql
 VOLUME /var/log/mysql
+VOLUME /usr/share/php/rvsitebuildercms
+VOLUME /var/www/html
+VOLUME /var/www/rvsitebuildercms
+VOLUME /var/www/storage
 
 EXPOSE 80
 EXPOSE 3306
