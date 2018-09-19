@@ -47,6 +47,10 @@ RUN apt-get install -y \
 	php7.1-xmlrpc \
 	php7.1-xsl \
 	php7.1-zip
+
+COPY phpmyadmin-configuration.exp /tmp/
+RUN expect /tmp/phpmyadmin-configuration.exp
+
 RUN apt-get install apache2 libapache2-mod-php7.1 -y
 RUN apt-get install mariadb-common mariadb-server mariadb-client -y
 RUN apt-get install postfix -y
