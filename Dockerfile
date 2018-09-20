@@ -31,9 +31,6 @@ RUN apt-get update
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
 
-RUN echo "Asia/Bangkok" | tee /etc/timezone
-RUN dpkg-reconfigure --frontend noninteractive tzdata
-
 RUN apt-get install -y expect unzip
 RUN apt-get install -y \
 	php7.1 \
@@ -73,9 +70,6 @@ RUN apt-get install -y \
 RUN apt-get install apache2 libapache2-mod-php7.1 -y
 RUN apt-get install mariadb-server mariadb-client -y
 
-#COPY phpmyadmin-configuration.exp /tmp/
-#RUN expect /tmp/phpmyadmin-configuration.exp
-
 RUN apt-get install postfix -y
 RUN apt-get install git nodejs npm composer nano tree vim curl ftp -y
 RUN npm install -g bower grunt-cli gulp
@@ -84,7 +78,6 @@ COPY index.php /var/www/html/
 COPY run-lamp.sh /usr/sbin/
 
 RUN a2enmod rewrite
-#RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 RUN mkdir /usr/share/php/rvsitebuildercms
 RUN mkdir /var/www/rvsitebuildercms
