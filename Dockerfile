@@ -70,10 +70,6 @@ RUN apt-get install -y \
 RUN apt-get install apache2 libapache2-mod-php7.1 -y
 RUN apt-get install mariadb-server mariadb-client -y
 
-RUN mysql -u root -psecret -e "CREATE DATABASE homestead CHARACTER SET = 'utf8' COLLATE = 'utf8_unicode_ci';"
-RUN mysql -u root -psecret -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';GRANT ALL PRIVILEGES ON * . * TO 'homestead'@'localhost';FLUSH PRIVILEGES;"
-RUN mysql -u root -psecret -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';FLUSH PRIVILEGES;"
-
 RUN apt-get install postfix -y
 RUN apt-get install git nodejs npm composer nano tree vim curl ftp -y
 RUN npm install -g bower grunt-cli gulp
