@@ -31,6 +31,9 @@ RUN apt-get update
 COPY debconf.selections /tmp/
 RUN debconf-set-selections /tmp/debconf.selections
 
+RUN echo "Asia/Bangkok" | tee /etc/timezone
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+
 RUN apt-get install -y expect unzip
 RUN apt-get install -y \
 	php7.1 \
