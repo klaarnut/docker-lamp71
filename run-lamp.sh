@@ -29,8 +29,7 @@ fi
 /bin/sed -i "s/short_open_tag\ \=\ Off/short_open_tag\ \=\ On/g" /etc/php/7.1/apache2/php.ini
 
 # set new db credential
-/etc/init.d/mysql stop
-mysql -u root -e "use mysql;update user set password=PASSWORD('') where User='root';update user set plugin='' where User='root';update user set authentication_string='' where User='root';flush privileges;"
+mysql -u root -psecret -e "use mysql;update user set password=PASSWORD('') where User='root';update user set plugin='' where User='root';update user set authentication_string='' where User='root';flush privileges;"
 
 /etc/init.d/mysql start
 
