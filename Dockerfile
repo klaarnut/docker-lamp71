@@ -106,11 +106,5 @@ EXPOSE 3306
 #Provisioning 
 #ENTRYPOINT ["docker-entrypoint.sh"]
 
-RUN /etc/init.d/mysql start
-RUN mysql -u root -psecret -e "CREATE DATABASE homestead CHARACTER SET = 'utf8' COLLATE = 'utf8_unicode_ci';"
-RUN mysql -u root -psecret -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';GRANT ALL PRIVILEGES ON * . * TO 'homestead'@'localhost';FLUSH PRIVILEGES;"
-RUN mysql -u root -psecret -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';FLUSH PRIVILEGES;"
-RUN /etc/init.d/mysql stop
-
 #Service
 CMD ["/usr/sbin/run-lamp.sh"]
