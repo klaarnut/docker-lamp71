@@ -98,12 +98,19 @@ VOLUME /var/www/storage
 EXPOSE 80
 EXPOSE 3306
 
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+#COPY docker-entrypoint.sh /usr/local/bin/
+
+#RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
+#RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 #Provisioning 
-ENTRYPOINT ["docker-entrypoint.sh"]
+#ENTRYPOINT ["docker-entrypoint.sh"]
+
+RUN /etc/init.d/mysql start
+RUN mysql -u root -psecret -e "CREATE DATABASE homestead CHARACTER SET = 'utf8' COLLATE = 'utf8_unicode_ci';"
+RUN mysql -u root -psecret -e "CREATE USER 'homestead'@'localhost' IDENTIFIED BY 'secret';GRANT ALL PRIVILEGES ON * . * TO 'homestead'@'localhost';FLUSH PRIVILEGES;"
+RUN mysql -u root -psecret -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';FLUSH PRIVILEGES;"
+RUN /etc/init.d/mysql stop
 
 #Service
 CMD ["/usr/sbin/run-lamp.sh"]
