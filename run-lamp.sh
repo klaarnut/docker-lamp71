@@ -101,7 +101,6 @@ fi
 /usr/sbin/postfix start
 
 # Run MariaDB
-/etc/init.d/mysql start
 /usr/bin/mysqld_safe --timezone=${DATE_TIMEZONE}&
 
 # Run Apache:
