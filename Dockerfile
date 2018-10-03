@@ -101,6 +101,9 @@ EXPOSE 3306
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+#Provisioning 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
+#Service
 CMD ["/usr/sbin/run-lamp.sh"]
