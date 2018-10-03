@@ -98,10 +98,6 @@ VOLUME /var/www/storage
 EXPOSE 80
 EXPOSE 3306
 
-COPY db-setup.sh /usr/local/bin/
-
-RUN sh /usr/local/bin/db-setup.sh
-
 #Provisioning 
 #ENTRYPOINT ["docker-entrypoint.sh"]
 
