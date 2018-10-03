@@ -98,10 +98,9 @@ VOLUME /var/www/storage
 EXPOSE 80
 EXPOSE 3306
 
-#COPY docker-entrypoint.sh /usr/local/bin/
+COPY db-setup.sh /usr/local/bin/
 
-#RUN ln -s usr/local/bin/docker-entrypoint.sh / # backwards compat
-#RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN sh /usr/local/bin/db-setup.sh
 
 #Provisioning 
 #ENTRYPOINT ["docker-entrypoint.sh"]
