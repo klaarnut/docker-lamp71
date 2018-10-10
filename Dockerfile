@@ -27,6 +27,8 @@ RUN sed -i "s/#\ th_TH\.UTF-8\ UTF-8/th_TH.UTF-8\ UTF-8/g" /etc/locale.gen
 RUN sed -i "s/#\ en_US\.UTF-8\ UTF-8/en_US.UTF-8\ UTF-8/g" /etc/locale.gen
 RUN locale-gen
 
+RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
+
 ENV LANG th_TH.UTF-8
 #ENV LANGUAGE th_TH:th
 ENV LC_ALL th_TH.UTF-8
