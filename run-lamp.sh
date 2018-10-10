@@ -11,6 +11,8 @@ function exportBoolean {
 exportBoolean LOG_STDOUT
 exportBoolean LOG_STDERR
 
+alias ll='ls -al --color=auto'
+
 if [ $LOG_STDERR ]; then
     /bin/ln -sf /dev/stderr /var/log/apache2/error.log
 else
