@@ -28,7 +28,7 @@ RUN sed -i "s/#\ en_US\.UTF-8\ UTF-8/en_US.UTF-8\ UTF-8/g" /etc/locale.gen
 RUN locale-gen
 
 ENV LANG th_TH.UTF-8
-ENV LANGUAGE th_TH:th
+#ENV LANGUAGE th_TH:th
 ENV LC_ALL th_TH.UTF-8
 
 RUN apt-get update
