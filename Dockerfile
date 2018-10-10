@@ -17,11 +17,16 @@ RUN apt-get upgrade
 RUN apt-get dist-upgrade
 RUN apt-get autoremove
 
-RUN apt-get install software-properties-common locales -y
+RUN apt-get install software-properties-common perl -y
+RUN apt-get install locales -y
+
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 RUN sh -c "echo 'deb [arch=amd64,i386] https://mirrors.evowise.com/mariadb/repo/10.2/ubuntu '$(lsb_release -cs)' main' > /etc/apt/sources.list.d/MariaDB-10.2.list"
 
-RUN sed -i -e 's/# th_TH.UTF-8 UTF-8/th_TH.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
+RUN sed -i "s/#\ th_TH\.UTF-8\ UTF-8/th_TH.UTF-8\ UTF-8/g" /etc/locale.gen
+RUN sed -i "s/#\ en_US\.UTF-8\ UTF-8/en_US.UTF-8\ UTF-8/g" /etc/locale.gen
+RUN locale-gen
+
 ENV LANG th_TH.UTF-8
 ENV LANGUAGE th_TH:th
 ENV LC_ALL th_TH.UTF-8
