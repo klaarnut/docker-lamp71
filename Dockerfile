@@ -94,6 +94,8 @@ RUN mkdir /var/www/storage
 RUN chmod +x /usr/sbin/run-lamp.sh
 RUN chown -R www-data:www-data /var/www/html
 
+RUN apt autoremove
+
 VOLUME /var/log/httpd
 VOLUME /var/lib/mysql
 VOLUME /var/log/mysql
