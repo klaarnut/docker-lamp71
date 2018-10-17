@@ -98,6 +98,7 @@ VOLUME /var/log/httpd
 VOLUME /var/lib/mysql
 VOLUME /var/log/mysql
 VOLUME /usr/share/php/rvsitebuildercms
+VOLUME /var/www
 VOLUME /var/www/html
 VOLUME /var/www/rvsitebuildercms
 VOLUME /var/www/storage
