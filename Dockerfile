@@ -94,9 +94,6 @@ RUN mkdir /var/www/storage
 RUN chmod +x /usr/sbin/run-lamp.sh
 RUN chown -R www-data:www-data /var/www/html
 
-COPY cron-minutes /var/www/
-RUN crontab -u www-data /var/www/cron-minutes
-
 RUN apt autoremove
 
 VOLUME /var/log/httpd
