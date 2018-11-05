@@ -97,7 +97,7 @@ else
 fi
 
 # Set PHP timezone
-#/bin/sed -i "s/\;date\.timezone\ \=/date\.timezone\ \=\ ${DATE_TIMEZONE}/" /etc/php/7.1/apache2/php.ini
+/bin/sed -i "s/\;date\.timezone\ \=/date\.timezone\ \=\ ${DATE_TIMEZONE}/" /etc/php/7.1/apache2/php.ini
 
 # Run Postfix
 /usr/sbin/postfix start
