@@ -102,6 +102,9 @@ fi
 # Run Postfix
 /usr/sbin/postfix start
 
+# Run Crond
+service cron start
+
 # Run MariaDB
 #/usr/bin/mysqld_safe --timezone=${DATE_TIMEZONE}&
 
