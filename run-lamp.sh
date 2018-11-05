@@ -103,6 +103,8 @@ fi
 /usr/sbin/postfix start
 
 # Run Crond
+echo '* * * * * cd /var/www && php artisan schedule:run >> /dev/null 2>&1' > /var/www/cron-minutes
+crontab -u www-data /var/www/cron-minutes
 service cron start
 
 # Run MariaDB
