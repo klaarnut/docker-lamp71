@@ -87,10 +87,7 @@ COPY run-lamp.sh /usr/sbin/
 RUN a2enmod rewrite
 
 RUN usermod -u 1000 www-data
-RUN find / -user 33 -exec chown -h 1000 {} 
-
 RUN groupmod -g 1000 www-data
-RUN find / -group 33 -exec chgrp -h 1000 {}
 RUN usermod -g 1000 www-data
 
 RUN mkdir /usr/share/php/rvsitebuildercms
@@ -99,7 +96,7 @@ RUN mkdir /var/www/storage
 
 
 RUN chmod +x /usr/sbin/run-lamp.sh
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www
 
 RUN apt autoremove
 
