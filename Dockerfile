@@ -94,6 +94,7 @@ RUN mkdir /usr/share/php/rvsitebuildercms
 RUN mkdir /var/www/rvsitebuildercms
 RUN mkdir /var/www/storage
 RUN mkdir /var/www/kwiki
+RUN mkdir /var/www/kwiki/wiki
 
 
 RUN chmod +x /usr/sbin/run-lamp.sh
@@ -110,6 +111,8 @@ VOLUME /var/www/html
 VOLUME /var/www/rvsitebuildercms
 VOLUME /var/www/storage
 VOLUME /var/www/kwiki
+VOLUME /var/www/kwiki/wiki
+
 
 
 EXPOSE 80
