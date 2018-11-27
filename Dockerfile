@@ -93,6 +93,7 @@ RUN usermod -g 1000 www-data
 RUN mkdir /usr/share/php/rvsitebuildercms
 RUN mkdir /var/www/rvsitebuildercms
 RUN mkdir /var/www/storage
+RUN mkdir /var/www/kwiki
 
 
 RUN chmod +x /usr/sbin/run-lamp.sh
@@ -108,6 +109,8 @@ VOLUME /var/www
 VOLUME /var/www/html
 VOLUME /var/www/rvsitebuildercms
 VOLUME /var/www/storage
+VOLUME /var/www/kwiki
+
 
 EXPOSE 80
 EXPOSE 3306
