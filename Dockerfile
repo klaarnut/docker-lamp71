@@ -90,11 +90,8 @@ RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
 RUN usermod -g 1000 www-data
 
-RUN mkdir /usr/share/php/rvsitebuildercms
-RUN mkdir /var/www/rvsitebuildercms
+RUN mkdir /var/www/application
 RUN mkdir /var/www/storage
-RUN mkdir /var/www/kwiki
-RUN mkdir /var/www/kwiki/wiki
 
 
 RUN chmod +x /usr/sbin/run-lamp.sh
@@ -105,13 +102,10 @@ RUN apt autoremove
 VOLUME /var/log/httpd
 VOLUME /var/lib/mysql
 VOLUME /var/log/mysql
-VOLUME /usr/share/php/rvsitebuildercms
 VOLUME /var/www
 VOLUME /var/www/html
-VOLUME /var/www/rvsitebuildercms
+VOLUME /var/www/application
 VOLUME /var/www/storage
-VOLUME /var/www/kwiki
-VOLUME /var/www/kwiki/wiki
 
 
 
