@@ -72,7 +72,8 @@ RUN apt-get install -y \
 	php7.1-tidy \
 	php7.1-xmlrpc \
 	php7.1-xsl \
-	php7.1-zip
+	php7.1-zip \
+	php7.1-bcmath
 
 RUN apt-get install apache2 libapache2-mod-php7.1 -y
 RUN apt-get install mariadb-server mariadb-client -y
